@@ -1,0 +1,125 @@
+#+TITLE: Sprint Proposal 1
+#+AUTHOR: Keidrick Wooten, Austin Swaim (pledged)
+#+COURSE: Introduction to Data Science
+#+STARTUP: indent overview
+* Problem
+  What are you trying to do? We are trying to see how many people use
+  cash and how many people use debit/credit cards. Specifically in 
+  Batesville Arkansas but with information from literature anywhere
+  in the world.
+
+* Reason
+  Why is this problem interesting to you or others? This problem is
+  interesting because we are in a time period, especially with 
+  covid-19, where physical cash isn't used as often as digital "=cash=".
+
+* Constraints
+  Which difficulties do you foresee? The only difficulties we could
+  expereince is if the card reading machine wasn't working during the
+  time of the project. Or if something were to happen the store
+  getting shut down.
+
+* Goals
+  What deliverables are you going to develop? We hope to develop a
+  system that can track how many people use cards vs. cash. Other
+  goals include tracking amount of people, average transaction of
+  cash, and average transaction of cards. Goals we might not achieve
+  would be the longevity of cash flow vs. card cash flow to see what
+  people use more over a long period of time.
+
+* Metrics
+  How are you going to measure if your project is successful or not?
+  To be successful in a project using technilogical devices is
+  difficult because technology doesn't work all the time like it
+  should, which is why literature is a big part of the project too.
+  But we think if everything goes accordingly we can have a
+  good argument whether physical cash or card "=cash=" is used more. 
+
+* Refrences
+1. Popeyes Louisiana Kitchen. (n.d.). About us. Retrieved
+September 15, 2024, from https://www.popeyes.com/about-us
+
+2. R Core Team. (2023). R: A language and environment for
+statistical computing [Software]. R Foundation for Statistical
+Computing. https://www.R-project.org/
+
+3. Kannan RR, Vasantha S. COVID 19 Outbreaks on the Growth of
+Self Servicing Technology Using Digital Payments. Webology. 
+2021;18(2):22-40. doi:10.14704/WEB/V18I2/WEB18305
+* Results
+
+** Card data
+#+name: Card Transactions
+#+begin_src R :session *R* :results output
+card <- c(10.87, 13.16, 11.07, 16.78, 12.84, 14.57,10.57, 8.75, 
+ 13.2, 21.99, 17.45, 9.87, 15.37, 12.25, 19.57, 11.97, 20.15, 14.6, 
+ 16.75, 18.33, 8.95, 22.09, 13.85, 9.57, 11.45, 10.97, 14.95, 20.57, 12.75,
+ 16.43, 18.99, 21.25, 15.8, 13.53, 10.11, 19.20, 11.65, 8.50, 17.97, 22, 
+ 9.83, 15.15, 12.45, 16.85, 19.75, 9.35, 14.36, 21.76, 18.67, 13.12, 20.35, 
+ 10.85, 11.57, 17.65, 8.95, 15.62, 19.12, 16.25, 13.95, 12.82, 22, 9.55, 14.75,
+ 18.25, 20.91, 15.45, 10.35, 16.13, 21.56, 11.25, 19.86, 8.65, 17.28, 13.65, 
+ 12.05, 15.9, 20.70, 10.65, 18.45, 9.15, 14.14, 16.95, 11.87, 21.35, 13.38, 
+ 19.25, 8.85, 15.05, 20.2, 17.75, 12.66, 9.95, 14.58, 18.48, 22, 11.15, 16.55,
+ 13.75, 19.68, 10.29, 8.70, 17.17, 15.35, 20.4, 12.98, 21.15, 18.13, 9.07)
+card
+#+end_src
+
+#+RESULTS:
+:   [1] 10.87 13.16 11.07 16.78 12.84 14.57 10.57  8.75 13.20 21.99 17.45  9.87
+:  [13] 15.37 12.25 19.57 11.97 20.15 14.60 16.75 18.33  8.95 22.09 13.85  9.57
+:  [25] 11.45 10.97 14.95 20.57 12.75 16.43 18.99 21.25 15.80 13.53 10.11 19.20
+:  [37] 11.65  8.50 17.97 22.00  9.83 15.15 12.45 16.85 19.75  9.35 14.36 21.76
+:  [49] 18.67 13.12 20.35 10.85 11.57 17.65  8.95 15.62 19.12 16.25 13.95 12.82
+:  [61] 22.00  9.55 14.75 18.25 20.91 15.45 10.35 16.13 21.56 11.25 19.86  8.65
+:  [73] 17.28 13.65 12.05 15.90 20.70 10.65 18.45  9.15 14.14 16.95 11.87 21.35
+:  [85] 13.38 19.25  8.85 15.05 20.20 17.75 12.66  9.95 14.58 18.48 22.00 11.15
+:  [97] 16.55 13.75 19.68 10.29  8.70 17.17 15.35 20.40 12.98 21.15 18.13  9.07
+
+#+name: Average Card Transactions
+#+begin_src R :session *R* :results output
+average_card <- mean(card)
+average_card
+#+end_src
+
+#+RESULTS: Average Card Transactions
+: [1] 15.06
+
+** Cash data
+
+#+name: Cash Transactions
+#+begin_src R :session *R* :results output
+cash <- c(8.19, 8.06, 8.72, 8.04, 8.14, 9.21, 9.77, 9.23, 9.37, 8.92, 8.94, 9.58,
+10.01, 9.63, 9.26, 9.94, 10.64, 9.36, 10.26, 10.78, 9.29, 10.05, 8.31, 9.09,
+8.79, 9.22, 9.59, 10.02, 9.67, 10.06, 10.47, 9.70, 8.85, 9.85, 9.72, 8.94,
+8.56, 9.53, 9.95, 10.04, 9.99, 10.57, 10.44, 8.83, 9.43, 10.77, 10.29, 9.13,
+8.69, 9.11, 10.04, 8.84, 9.51, 8.62, 10.18, 10.13, 9.35, 10.91, 10.00, 10.80,
+8.97, 8.92, 10.08, 9.25, 8.18, 10.71, 9.74, 10.57, 9.22, 10.51, 8.81, 10.17,
+10.67, 9.24, 8.55, 8.96, 9.56, 10.26, 10.46, 9.77, 9.44, 10.17, 8.57, 9.60,
+8.72, 9.85, 9.45, 8.92, 9.12, 9.50, 8.29, 9.17, 10.07, 10.39, 10.24, 9.39,
+9.05, 10.32, 10.47, 9.82, 9.56, 9.64, 9.98, 8.81, 10.01, 9.61, 10.18, 10.28,
+8.66, 9.88, 10.22, 9.53, 9.85, 10.26, 10.39, 9.79, 9.72, 9.58, 10.12, 10.52)
+cash
+#+end_src
+
+#+RESULTS: Cash Transactions
+#+begin_example
+  [1]  8.19  8.06  8.72  8.04  8.14  9.21  9.77  9.23  9.37  8.92  8.94  9.58
+ [13] 10.01  9.63  9.26  9.94 10.64  9.36 10.26 10.78  9.29 10.05  8.31  9.09
+ [25]  8.79  9.22  9.59 10.02  9.67 10.06 10.47  9.70  8.85  9.85  9.72  8.94
+ [37]  8.56  9.53  9.95 10.04  9.99 10.57 10.44  8.83  9.43 10.77 10.29  9.13
+ [49]  8.69  9.11 10.04  8.84  9.51  8.62 10.18 10.13  9.35 10.91 10.00 10.80
+ [61]  8.97  8.92 10.08  9.25  8.18 10.71  9.74 10.57  9.22 10.51  8.81 10.17
+ [73] 10.67  9.24  8.55  8.96  9.56 10.26 10.46  9.77  9.44 10.17  8.57  9.60
+ [85]  8.72  9.85  9.45  8.92  9.12  9.50  8.29  9.17 10.07 10.39 10.24  9.39
+ [97]  9.05 10.32 10.47  9.82  9.56  9.64  9.98  8.81 10.01  9.61 10.18 10.28
+[109]  8.66  9.88 10.22  9.53  9.85 10.26 10.39  9.79  9.72  9.58 10.12 10.52
+#+end_example
+
+#+name: Average Cash Transaction
+#+begin_src R :session *R* :results output
+average_cash <-mean(cash)
+average_cash
+#+end_src
+
+#+RESULTS: Average Cash Transaction
+: [1] 9.592667
